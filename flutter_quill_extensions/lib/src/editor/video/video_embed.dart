@@ -23,7 +23,9 @@ class QuillEditorVideoEmbedBuilder extends EmbedBuilder {
     BuildContext context,
     EmbedContext embedContext,
   ) {
-    final videoUrl = embedContext.node.value.data;
+    final videoUrl =
+        config.transformVideoUrl?.call(embedContext.node.value.data) ??
+            embedContext.node.value.data;
 
     final customVideoBuilder = config.customVideoBuilder;
     if (customVideoBuilder != null) {

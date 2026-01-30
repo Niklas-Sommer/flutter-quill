@@ -6,6 +6,7 @@ class QuillEditorVideoEmbedConfig {
   const QuillEditorVideoEmbedConfig({
     this.onVideoInit,
     this.customVideoBuilder,
+    this.transformVideoUrl,
   });
 
   /// [onVideoInit] is a callback function that gets triggered when
@@ -43,4 +44,8 @@ class QuillEditorVideoEmbedConfig {
   /// **Might be removed or changed in future releases.**
   @experimental
   final Widget? Function(String videoUrl, bool readOnly)? customVideoBuilder;
+
+  /// Transform the videoUrl before it is loaded as a video. Usefull if you decide
+  /// to store only a relative url and need to first construct the absolute URL
+  final String Function(String videoUrl)? transformVideoUrl;
 }
